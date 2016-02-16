@@ -1,0 +1,20 @@
+jnotebook_setter:
+    build: .
+    ports:
+        - "8800:8888"
+    volumes:
+        - ./notebooks/setter:/notebooks
+    links:
+        - redis
+
+jnotebook_getter:
+    build: .
+    ports:
+        - "8801:8888"
+    volumes:
+        - ./notebooks/getter:/notebooks
+    links:
+        - redis
+
+redis:
+    image: redis:latest
